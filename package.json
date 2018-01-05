@@ -1,0 +1,19 @@
+{
+  "name": "briansawesomehomework",
+  "version": "1.0.0",
+  "description": "myhomeworkforweek6monday",
+  "main": "keys.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrianElliston/liri-node-app.git"
+  },
+  "author": "brian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrianElliston/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/BrianElliston/liri-node-app#readme"
+}
