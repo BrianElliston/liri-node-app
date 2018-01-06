@@ -23,6 +23,16 @@ var client = new twitter(
 
         console.log(process.argv[2]);
 
+        var params = {screen_name: 'BrianElliston_'};
+        client.get('statuses/user_timeline', params, function(error, tweets, response) {
+         if (!error) {
+           for (i = 0; i < tweets.length; i++){
+            console.log(tweets[i].text);
+
+           }
+           
+         }
+        });
    };
 
    function mySpotify (){
@@ -47,6 +57,7 @@ var client = new twitter(
 
        if (command === "my-tweets"){
         myTweets();
+        
 
        }
        
@@ -68,9 +79,3 @@ var client = new twitter(
            console.log("Quit screwing around!!")
        }
 
-var params = {screen_name: 'nodejs'};
-client.get('statuses/user_timeline', params, function(error, tweets, response) {
- if (!error) {
-   console.log(tweets);
- }
-});
