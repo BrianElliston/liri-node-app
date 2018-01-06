@@ -1,16 +1,72 @@
 require("dotenv").config();
 
+var keys = require("./keys");
 
 
+var twitter = require('twitter');
 
-var Twitter = require('twitter');
+var Spotify = require('node-spotify-api');
 
-var client = new Twitter({
- consumer_key: '',
- consumer_secret: '',
- access_token_key: '',
- access_token_secret: ''
-});
+var request = require('request');
+
+var fs = require('fs')
+
+var client = new twitter(
+ keys.twitter
+);
+
+// var spotify = new Spotify(
+//     keys.spotify
+//    );
+
+   function myTweets (){
+
+        console.log(process.argv[2]);
+
+   };
+
+   function mySpotify (){
+
+        console.log(process.argv[2]);
+
+   };
+
+   function myDoIt (){
+    
+        console.log(process.argv[2]);
+    
+       };
+
+   function myImdb (){
+    
+        console.log(process.argv[2]);
+    
+       };
+
+       var command = process.argv[2];
+
+       if (command === "my-tweets"){
+        myTweets();
+
+       }
+       
+       else if (command === "spotify-this-song"){
+        mySpotify();
+       }
+
+       else if (command === "movie-this"){
+
+        myImdb();
+       }
+
+       else if (command === "do-what-it-says"){
+
+        myDoIt();
+       }
+
+       else {
+           console.log("Quit screwing around!!")
+       }
 
 var params = {screen_name: 'nodejs'};
 client.get('statuses/user_timeline', params, function(error, tweets, response) {
