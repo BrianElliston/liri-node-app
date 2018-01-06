@@ -5,19 +5,21 @@ var keys = require("./keys");
 
 var twitter = require('twitter');
 
-var Spotify = require('node-spotify-api');
+var spotify = require('node-spotify-api');
 
 var request = require('request');
 
 var fs = require('fs')
 
+var spot = require('spotify-web-api-node');
+
 var client = new twitter(
  keys.twitter
 );
 
-// var spotify = new Spotify(
-//     keys.spotify
-//    );
+var spotify = new spotify(
+    keys.spotify
+   );
 
    function myTweets (){
 
@@ -38,6 +40,28 @@ var client = new twitter(
    function mySpotify (){
 
         console.log(process.argv[2]);
+
+        // spotify.search({ type: 'track', query: 'dancing in the moonlight' }, function(err, data) {
+        //     if ( err ) {
+        //         console.log('Error occurred: ' + err);
+        //         return;
+        //     }
+         
+        //     // Do something with 'data' 
+        // });
+
+        // var spotifyApi = new SpotifyWebApi({
+        //     clientId : 'fcecfc72172e4cd267473117a17cbd4d',
+        //     clientSecret : 'a6338157c9bb5ac9c71924cb2940e1a7',
+        //     redirectUri : 'http://www.example.com/callback'
+        //   });
+
+        spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE')
+        .then(function(data) {
+          console.log('Artist albums', data.body);
+        }, function(err) {
+          console.error(err);
+        });
 
    };
 
