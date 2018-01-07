@@ -11,7 +11,8 @@ var request = require('request');
 
 var fs = require('fs')
 
-var spot = require('spotify-web-api-node');
+var yourChoice = process.argv[3];
+
 
 var client = new twitter(
  keys.twitter
@@ -33,6 +34,12 @@ var spotify = new spotify(
 
            }
            
+           
+         }
+
+         else {
+
+            console.log(error);
          }
         });
    };
@@ -41,27 +48,20 @@ var spotify = new spotify(
 
         console.log(process.argv[2]);
 
-        // spotify.search({ type: 'track', query: 'dancing in the moonlight' }, function(err, data) {
-        //     if ( err ) {
-        //         console.log('Error occurred: ' + err);
-        //         return;
-        //     }
-         
-        //     // Do something with 'data' 
-        // });
+        
 
-        // var spotifyApi = new SpotifyWebApi({
-        //     clientId : 'fcecfc72172e4cd267473117a17cbd4d',
-        //     clientSecret : 'a6338157c9bb5ac9c71924cb2940e1a7',
-        //     redirectUri : 'http://www.example.com/callback'
-        //   });
-
-        spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE')
-        .then(function(data) {
-          console.log('Artist albums', data.body);
-        }, function(err) {
-          console.error(err);
+        spotify.search({ type: 'track', query: yourChoice || 'dancing in the moonlight' }, function(err, data) {
+            if ( err ) {
+                console.log('Error occurred: ' + err);
+                return;
+            }
+       
+         console.log(data.tracks.items[0].name);
+            // Do something with 'data' 
         });
+
+       
+
 
    };
 
@@ -74,6 +74,11 @@ var spotify = new spotify(
    function myImdb (){
     
         console.log(process.argv[2]);
+        request('http://www.omdbapi.com/?apikey=a2d0527a&s=' + (yourChoice || "it"), function (error, response, body) {
+            console.log('error:', error); // Print the error if one occurred
+            console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+            console.log('body:', body); // Print the HTML for the Google homepage.
+          });
     
        };
 
